@@ -1,6 +1,7 @@
-var app = require('app')
-var BrowserWindow = require('browser-window')
-var globalShortcut = require('global-shortcut')
+var app = require('app');
+var BrowserWindow = require('browser-window');
+var globalShortcut = require('global-shortcut');
+var opener = require('opener');
 
 app.on('ready', function() {
 
@@ -10,11 +11,13 @@ app.on('ready', function() {
     console.log('open search prompt');
 
     var mainWindow = new BrowserWindow({
-      width: 800,
-      height: 600
-    })
+      useContentSize: true;
+    });
 
-    mainWindow.loadURL("file://" + __dirname + "/index.html")
-  })
+    mainWindow.loadURL("file://" + __dirname + "/index.html");
 
-})
+    opener("https://www.google.com");
+
+  });
+
+});
